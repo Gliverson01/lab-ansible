@@ -1,6 +1,6 @@
 ---
 - name: Instalação do sistema
-  hosts: default
+  hosts: labguru2
   become: yes
   tasks:
     - name: Criar arquivo instala_resetv2.sh

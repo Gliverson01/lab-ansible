@@ -1,6 +1,6 @@
 ---
 - name: Atualizar o diretório /app/ usando comandos shell
-  hosts: default
+  hosts: labguru2
   become: yes
   become_user: root
   tasks:
