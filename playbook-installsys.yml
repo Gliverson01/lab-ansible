@@ -1,0 +1,29 @@
+---
+- name: Instalação do sistema
+  hosts: default
+  become: yes
+  tasks:
+    - name: Criar arquivo instala_resetv2.sh
+      copy:
+        content: |
+          #!/bin/bash
+
+
+        dest: /root/instala_resetv2.sh
+        mode: '0755'  
+
+    - name: Verificar se o arquivo foi criado
+      shell: ls /root/instala_resetv2.sh
+      register: output
+      ignore_errors: yes
+
+    - debug:
+        msg: "O arquivo instala_resetv2.sh foi criado com sucesso!"
+      when: output is success
+
+    - name: Executar o script instala_resetv2.sh
+      shell: /bin/bash /root/instala_resetv2.sh
+      register: script_output
+      ignore_errors: yes
+
+

@@ -1,0 +1,29 @@
+---
+- name: Atualizar o diretório /app/ usando comandos shell
+  hosts: default
+  become: yes
+  become_user: root
+  tasks:
+    - name: Atualizar o diretório /app/ com git fetch
+      shell: cd /app/ && git fetch
+      register: output_fetch
+
+    - name: Exibir saída do git fetch
+      debug:
+        var: output_fetch.stdout
+
+    - name: Atualizar o diretório /app/ com git reset --hard
+      shell: cd /app/ && git reset --hard
+      register: output_reset
+
+    - name: Exibir saída do git reset --hard
+      debug:
+        var: output_reset.stdout
+
+    - name: Atualizar o diretório /app/ com git pull
+      shell: cd /app/ && git pull
+      register: output_pull
+
+    - name: Exibir saída do git pull
+      debug:
+        var: output_pull.stdout
